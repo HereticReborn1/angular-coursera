@@ -13,12 +13,22 @@ function lcController($scope) {
     $scope.checkIfTooMuch = function() {
         if($scope.lunchList.length > 0) {
             var list = $scope.lunchList.split(',');
+            var count = 0;
+            for(var i=0; i<list.length; i++) {
+                if(list[i] !== "") 
+                    count++;
+            }
             // console.log(list.length);
-            if(list.length > 3) 
+            if(count > 3) {
                 $scope.message = "Too much!";
-            else
+            }
+            else {
                 $scope.message = "Enjoy!";
+            }
+            $scope.messageColor = "green";
+            
         } else {
+            $scope.messageColor = "red";
             $scope.message = "Please enter data first";
         }       
         
